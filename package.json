@@ -1,0 +1,35 @@
+{
+  "name": "fd-odo-connector",
+  "version": "1.0.0",
+  "description": "Connector for exracting data from ODO system and pushing it to Zest Cloud for Mobile processing",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --config jestconfig.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:zestlabs-io/playground/fd-odo-connector"
+  },
+  "author": "ZestLabs GmbH",
+  "license": "ISC",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.63",
+    "@zestlabs-io/zest-js-sdk": "^1.0.2",
+    "aws-lambda": "^1.0.6",
+    "got": "^11.7.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.0.3"
+  }
+}

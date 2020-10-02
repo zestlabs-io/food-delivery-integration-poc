@@ -1,0 +1,39 @@
+service: food-delivery-service
+frameworkVersion: "2"
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+  stage: dev
+  region: eu-west-3
+
+  environment:
+    LOCATIONIQ_KEY: <LOCATIONIQ_KEY>
+    ODO_USERNAME: <ODO_USERNAME>
+    ODO_PASSWORD: <ODO_PASSWORD>
+    ZEST_KEY: <ZEST_KEY>
+    ZEST_SECRET: ZEST_SECRET>
+  resourcePolicy:
+    - Effect: Allow
+      Principal: { AWS: arn:aws:iam::024637306258:root }
+      Action:
+        - "lambda:InvokeFunction"
+      Resource:
+        - "arn:aws:lambda:eu-west-3:YOUR_AWS_ACCOUNT:function:food-delivery-service-fetch-deliveries"
+package:
+  include:
+    - ./**
+    - ../dist/**
+  exclude:
+    - .serverless/**
+    - package.json
+    - package-lock.json
+
+functions:
+  fetchDeliveries:
+    handler: dist/handler.fetchDeliveries
+    name: food-delivery-service-fetch-deliveries
+    timeout: 60
+    provisionedConcurrency: 1
+    reservedConcurrency: 3
+    memorySize: 128

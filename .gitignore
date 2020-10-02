@@ -1,0 +1,10 @@
+node_modules
+lib
+dist
+scaleway/*.zip
+scaleway/packeg*.json
+scaleway/dist
+scaleway/node_modules
+*.zip
+lambda/.serverless
+package-lock.json
